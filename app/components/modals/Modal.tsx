@@ -70,7 +70,7 @@ export default function Modal({
 							<div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px] ">
 								<button
 									onClick={handleClose}
-									className="p-1 bor0  hover:opacity-70 transition absolute right-9"
+									className="p-1 bor0  hover:opacity-70 transition absolute right-8"
 								>
 									<IoMdClose size={18} />
 								</button>
@@ -100,6 +100,7 @@ export default function Modal({
 										onClick={handleSubmit}
 									/>
 								</div>
+								{footer}
 							</div>
 						</div>
 					</div>
