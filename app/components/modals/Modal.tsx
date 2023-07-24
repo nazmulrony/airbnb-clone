@@ -13,6 +13,7 @@ interface ModalProps {
 	footer?: React.ReactElement;
 	actionLabel: string;
 	disabled?: boolean;
+	isLoading?: boolean;
 	secondaryAction?: () => void;
 	secondaryActionLabel?: string;
 }
@@ -24,6 +25,7 @@ export default function Modal({
 	body,
 	footer,
 	disabled,
+	isLoading,
 	actionLabel,
 	secondaryAction,
 	secondaryActionLabel,
@@ -95,6 +97,7 @@ export default function Modal({
 											/>
 										)}
 									<Button
+										isLoading={isLoading}
 										disabled={disabled}
 										label={actionLabel}
 										onClick={handleSubmit}

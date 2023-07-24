@@ -26,7 +26,7 @@ export default function RegisterModal() {
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		setIsLoading(true);
 		axios
-			.post('/api/register', data)
+			.post('/api/auth/register', data)
 			.then(() => {
 				registerModal.onClose();
 			})
@@ -101,6 +101,7 @@ export default function RegisterModal() {
 
 	return (
 		<Modal
+			isLoading={isLoading}
 			disabled={isLoading}
 			isOpen={registerModal.isOpen}
 			title="Register"
