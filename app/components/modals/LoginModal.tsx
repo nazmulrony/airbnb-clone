@@ -40,7 +40,10 @@ export default function LoginModal() {
 
 	const bodyContent = (
 		<div className="flex flex-col gap-4 ">
-			<Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+			<Heading
+				title="Login to Airbnb"
+				subtitle="Login yo your account!"
+			/>
 			<Input
 				id="name"
 				label="Name"
