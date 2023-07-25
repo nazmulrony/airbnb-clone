@@ -42,12 +42,11 @@ export default function Input({
 				`}
 			/>
 			<label
-				className={`absolute text-md  duration-150 transform  top-5 z-10 origin-[0] -translate-y-4
+				className={`absolute text-md  duration-150 transform  top-5 z-10 origin-[0] -translate-y-3
 				${formatPrice ? 'left-9' : 'left-4'}
 				peer-placeholder-shown:scale-100
 				peer-placeholder-shown:translate-y-0
 				peer-focus:scale-75
-				peer-
 				peer-focus:-translate-y-4
 				${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
 				`}

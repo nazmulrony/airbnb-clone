@@ -1,7 +1,7 @@
 'use client';
 
-import axios from 'axios';
-import { useCallback, useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
@@ -11,8 +11,10 @@ import Input from '../inputs/Input';
 import toast from 'react-hot-toast';
 import Button from '../Button';
 import useLoginModal from '@/app/hooks/useLoginModal';
+import { useRouter } from 'next/navigation';
 
 export default function LoginModal() {
+	const router = useRouter();
 	const loginModal = useLoginModal();
 	const [isLoading, setIsLoading] = useState(false);
 	const {
@@ -20,38 +22,28 @@ export default function LoginModal() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FieldValues>({
-		defaultValues: { name: '', email: '', password: '' },
+		defaultValues: { email: '', password: '' },
 	});
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		setIsLoading(true);
-		axios
-			.post('/api/auth/register', data)
-			.then(() => {
+		signIn('credentials', { ...data, redirect: false }).then((callback) => {
+			setIsLoading(false);
+			if (callback?.ok) {
+				console.log(callback);
+				toast.success('Logged in successfully');
+				router.refresh();
 				loginModal.onClose();
-			})
-			.catch((error) => {
-				toast.error(error.message);
-			})
-			.finally(() => {
-				setIsLoading(false);
-			});
+			}
+			if (callback?.error) {
+				toast.error(callback.error);
+			}
+		});
 	};
 
 	const bodyContent = (
 		<div className="flex flex-col gap-4 ">
-			<Heading
-				title="Login to Airbnb"
-				subtitle="Login yo your account!"
-			/>
-			<Input
-				id="name"
-				label="Name"
-				disabled={isLoading}
-				register={register}
-				errors={errors}
-				required
-			/>
+			<Heading title="Welcome back!" subtitle="Login to your account." />
 			<Input
 				id="email"
 				label="Email"
@@ -62,6 +54,7 @@ export default function LoginModal() {
 				type="email"
 			/>
 			<Input
+				type="password"
 				id="password"
 				label="Password"
 				disabled={isLoading}

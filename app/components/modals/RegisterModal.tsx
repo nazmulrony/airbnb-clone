@@ -59,6 +59,7 @@ export default function RegisterModal() {
 				type="email"
 			/>
 			<Input
+				type="password"
 				id="password"
 				label="Password"
 				disabled={isLoading}
