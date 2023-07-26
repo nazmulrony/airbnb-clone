@@ -5,11 +5,14 @@ import { useState, useCallback } from 'react';
 import MenuItem from './MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
+import { signOut, useSession } from 'next-auth/react';
 
 export default function UserMenu() {
 	const registerModal = useRegisterModal();
 	const loginModal = useLoginModal();
 	const [isOpen, setIsOpen] = useState(false);
+	const session = useSession();
+	console.log(session);
 
 	const toggleOpen = useCallback(() => {
 		setIsOpen((value) => !value);
@@ -36,16 +39,40 @@ export default function UserMenu() {
 			{isOpen && (
 				<div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
 					<div className="flex flex-col cursor-pointer">
-						<>
-							<MenuItem
-								label="Login"
-								onClick={loginModal.onOpen}
-							/>
-							<MenuItem
-								label="Sign Up"
-								onClick={registerModal.onOpen}
-							/>
-						</>
+						{session.status === 'authenticated' ? (
+							<>
+								<MenuItem label="My Trips" onClick={() => {}} />
+								<MenuItem
+									label="My Favorites"
+									onClick={() => {}}
+								/>
+								<MenuItem
+									label="My Reservations"
+									onClick={() => {}}
+								/>
+								<MenuItem
+									label="My Properties"
+									onClick={() => {}}
+								/>
+								<MenuItem
+									label="Airbnb My Home"
+									onClick={() => {}}
+								/>
+								<hr />
+								<MenuItem label="Logout" onClick={signOut} />
+							</>
+						) : (
+							<>
+								<MenuItem
+									label="Login"
+									onClick={loginModal.onOpen}
+								/>
+								<MenuItem
+									label="Sign Up"
+									onClick={registerModal.onOpen}
+								/>
+							</>
+						)}
 					</div>
 				</div>
 			)}
