@@ -6,13 +6,11 @@ import queryString from 'query-string';
 interface CategoryBoxProps {
 	icon: IconType;
 	label: String;
-	description: String;
 	selected?: boolean;
 }
 
 export default function CategoryBox({
 	icon: Icon,
-	description,
 	label,
 	selected,
 }: CategoryBoxProps) {
@@ -45,6 +43,7 @@ export default function CategoryBox({
 
 	return (
 		<div
+			onClick={handleClick}
 			className={`flex flex-col items-center justify-center gap-2 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer ${
 				selected ? 'border-b-neutral-800' : 'border-transparent'
 			}
