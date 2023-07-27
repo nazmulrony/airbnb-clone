@@ -18,7 +18,6 @@ export default function CategoryBox({
 	const router = useRouter();
 	const params = useSearchParams();
 
-	//click handler
 	const handleClick = useCallback(() => {
 		let currentQuery = {};
 		if (params) {
