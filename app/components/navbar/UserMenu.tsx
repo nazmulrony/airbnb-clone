@@ -21,6 +21,8 @@ export default function UserMenu() {
         if (!(session.status === "authenticated")) {
             return loginModal.onOpen();
         }
+
+        //open rent modal
     }, [session, loginModal]);
 
     return (
