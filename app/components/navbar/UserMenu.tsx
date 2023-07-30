@@ -6,12 +6,15 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut, useSession } from "next-auth/react";
+import useRentModal from "@/app/hooks/useRentModal";
 
 export default function UserMenu() {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
+    const rentModal = useRentModal();
     const [isOpen, setIsOpen] = useState(false);
     const session = useSession();
+    console.log(session);
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
@@ -22,8 +25,8 @@ export default function UserMenu() {
             return loginModal.onOpen();
         }
 
-        //open rent modal
-    }, [session, loginModal]);
+        rentModal.onOpen();
+    }, [session, loginModal, rentModal]);
 
     return (
         <div className="relative ">
@@ -64,7 +67,7 @@ export default function UserMenu() {
                                 />
                                 <MenuItem
                                     label="Airbnb My Home"
-                                    onClick={() => {}}
+                                    onClick={rentModal.onOpen}
                                 />
                                 <hr />
                                 <MenuItem label="Logout" onClick={signOut} />
