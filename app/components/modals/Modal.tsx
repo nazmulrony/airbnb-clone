@@ -60,10 +60,10 @@ export default function Modal({
     return (
         <>
             <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none z-50 focus:outline-none bg-neutral-800/70">
-                <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full md:h-auto lg:h-auto ">
+                <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full grid place-items-center ">
                     {/* Content */}
                     <div
-                        className={` translate duration-300 h-full ${
+                        className={` translate duration-300 w-full ${
                             showModal ? "translate-y-0" : " translate-y-full"
                         } ${showModal ? "opacity-100" : "opacity-0"}`}
                     >
