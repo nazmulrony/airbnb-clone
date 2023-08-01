@@ -26,7 +26,10 @@ export default function Input({
 	return (
 		<div className="w-full relative">
 			{formatPrice && (
-				<BiDollar size={24} className="text-neutral-700 top-5 left-2" />
+				<BiDollar
+					size={24}
+					className=" absolute text-neutral-700 top-5 left-2"
+				/>
 			)}
 			<input
 				id={id}
