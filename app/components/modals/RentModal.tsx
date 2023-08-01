@@ -8,6 +8,7 @@ import CategoryInput from '../inputs/CategoryInput';
 import { FieldValues, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
+import Counter from '../inputs/Counter';
 
 enum STEPS {
 	CATEGORY = 0,
@@ -87,6 +88,7 @@ export default function RentModal() {
 	}, [step]);
 
 	//body content
+	//Category Step
 	let bodyContent = (
 		<div className="flex flex-col gap-8">
 			<Heading
@@ -109,7 +111,7 @@ export default function RentModal() {
 			</div>
 		</div>
 	);
-
+	//Location step
 	if (step === STEPS.LOCATION) {
 		bodyContent = (
 			<div className="flex flex-col gap-8">
@@ -122,6 +124,18 @@ export default function RentModal() {
 					value={location}
 				/>
 				<Map center={location?.latlng} />
+			</div>
+		);
+	}
+	//Info step
+	if (step === STEPS.INFO) {
+		bodyContent = (
+			<div className="flex flex-col gap-8">
+				<Heading
+					title="Share some basics about your place"
+					subtitle="What amenities fo you have?"
+				/>
+				<Counter title="Number of guests" subtitle="How many guests?" />
 			</div>
 		);
 	}
