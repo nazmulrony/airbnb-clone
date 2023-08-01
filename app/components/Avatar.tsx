@@ -7,7 +7,6 @@ interface AvatarProps {
 }
 
 export default function Avatar({ src }: AvatarProps) {
-	console.log(src);
 	return (
 		<Image
 			className="rounded-full "
