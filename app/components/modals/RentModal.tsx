@@ -100,7 +100,7 @@ export default function RentModal() {
 				router.refresh();
 				reset();
 				setStep(STEPS.CATEGORY);
-				rentModal.onClose;
+				rentModal.onClose();
 			})
 			.catch((error) => {
 				toast.error(error?.message);
