@@ -103,7 +103,7 @@ export default function RentModal() {
 				rentModal.onClose();
 			})
 			.catch((error) => {
-				toast.error(error?.message);
+				toast.error('Something went wrong! Try again.');
 			})
 			.finally(() => {
 				setIsLoading(false);
