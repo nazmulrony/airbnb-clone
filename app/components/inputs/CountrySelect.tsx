@@ -49,7 +49,8 @@ export default function CountrySelect({ value, onChange }: CountrySelectProps) {
 					colors: {
 						...theme.colors,
 						primary: 'black',
-						primary25: '#ffe4e6',
+						primary25: '#f7f7f7f7',
+						primary50: '#ccc',
 					},
 				})}
 			/>
