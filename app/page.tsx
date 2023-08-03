@@ -1,13 +1,15 @@
 import Image from 'next/image';
 import Container from './components/Container';
 import EmptyState from './components/EmptyState';
+import getListings from './actions/getListings';
 
-export default function Home() {
-	const isEmpty = true;
+export default async function Home() {
+	const listings = await getListings();
 
-	if (isEmpty) {
+	if (listings.length === 0) {
 		return <EmptyState />;
 	}
+	console.log(listings);
 
 	return (
 		<Container>
