@@ -33,7 +33,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
 	return NextResponse.json(user);
 }
 
-//delete favorite
+//delete favorite item
 export async function DELETE(
 	request: Request,
 	{ params }: { params: IParams }

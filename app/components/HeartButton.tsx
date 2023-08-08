@@ -2,6 +2,8 @@
 
 import { User } from '@prisma/client';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import useFavorite from '../hooks/useFavorite';
+import Spinner from './Spinner';
 
 interface HeartButtonProps {
 	listingId: string;
@@ -11,10 +13,20 @@ export default function HeartButton({
 	listingId,
 	currentUser,
 }: HeartButtonProps) {
-	const hasFavorite = false;
-	const toggleFavorite = () => {};
+	const { hasFavorite, toggleFavorite, isLoading } = useFavorite({
+		listingId,
+		currentUser,
+	});
+
+	if (isLoading) {
+		return <Spinner fill="rose-500" size="small" />;
+	}
+
 	return (
-		<div className="relative hover:opacity-80 transition">
+		<div
+			onClick={toggleFavorite}
+			className="relative hover:opacity-80 transition"
+		>
 			<AiOutlineHeart
 				size={28}
 				className="fill-white absolute  -left-[2px] -top-[2px] "
