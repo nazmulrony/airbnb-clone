@@ -19,7 +19,7 @@ export default function HeartButton({
 	});
 
 	if (isLoading) {
-		return <Spinner fill="rose-500" size="small" />;
+		return <Spinner fill="fill-rose-500" size="small" />;
 	}
 
 	return (
