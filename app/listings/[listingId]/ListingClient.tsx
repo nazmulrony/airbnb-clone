@@ -3,12 +3,13 @@
 import Container from '@/app/components/Container';
 import ListingHead from '@/app/components/listings/ListingHead';
 import ListingInfo from '@/app/components/listings/ListingInfo';
+import ListingReservation from '@/app/components/listings/ListingReservation';
 import { categories } from '@/app/components/navbar/Categories';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { Listing, Reservation, User } from '@prisma/client';
 import axios from 'axios';
 import { error } from 'console';
-import { differenceInDays, eachDayOfInterval } from 'date-fns';
+import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -86,7 +87,7 @@ export default function ListingClient({
 	//calculating the price depending on how user selects the date
 	useEffect(() => {
 		if (dateRange.startDate && dateRange.endDate) {
-			const dayCount = differenceInDays(
+			const dayCount = differenceInCalendarDays(
 				dateRange.startDate,
 				dateRange.endDate
 			);
@@ -124,6 +125,17 @@ export default function ListingClient({
 							bathroomCount={listing.bathroomCount}
 							locationValue={listing.locationValue}
 						/>
+						<div className="order-first mb-10 md:order-last md:col-span-3">
+							<ListingReservation
+								price={listing.price}
+								totalPrice={totalPrice}
+								onChangeDate={(value) => setDateRange(value)}
+								dateRange={dateRange}
+								onSubmit={onCreateReservation}
+								disabled={isLoading}
+								disabledDates={disabledDates}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
