@@ -5,7 +5,6 @@ import ListingHead from '@/app/components/listings/ListingHead';
 import ListingInfo from '@/app/components/listings/ListingInfo';
 import { categories } from '@/app/components/navbar/Categories';
 import { Listing, Reservation, User } from '@prisma/client';
-import { list } from 'postcss';
 import { useMemo } from 'react';
 
 interface ListingClientProps {
@@ -31,7 +30,6 @@ export default function ListingClient({
 						imageSrc={listing.imageSrc}
 						locationValue={listing.locationValue}
 						id={listing.id}
-						// currentUser={currentUser}
 						currentUser={currentUser}
 					/>
 					<div className="grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-6">
