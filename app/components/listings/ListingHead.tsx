@@ -38,7 +38,7 @@ export default function ListingHead({
 					fill
 					className="object-cover w-full"
 				/>
-				<div className="absolute top-5 right-5">
+				<div className="absolute top-5 right-5 cursor-pointer">
 					<HeartButton listingId={id} currentUser={currentUser} />
 				</div>
 			</div>
