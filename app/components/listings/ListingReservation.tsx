@@ -34,7 +34,7 @@ export default function ListingReservation({
 				disabledDates={disabledDates}
 				onChange={(value) => onChangeDate(value.selection)}
 			/>
-			hr
+			<hr />
 		</div>
 	);
 }

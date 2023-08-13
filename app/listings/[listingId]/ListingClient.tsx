@@ -8,7 +8,6 @@ import { categories } from '@/app/components/navbar/Categories';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { Listing, Reservation, User } from '@prisma/client';
 import axios from 'axios';
-import { error } from 'console';
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -43,6 +42,7 @@ export default function ListingClient({
 
 		reservations.forEach((reservation) => {
 			const range = eachDayOfInterval({
+				//this method returns an array of dates within the specified time interval
 				start: new Date(reservation.startDate),
 				end: new Date(reservation.endDate),
 			});
