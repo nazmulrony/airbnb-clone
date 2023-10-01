@@ -8,7 +8,7 @@ import { categories } from '@/app/components/navbar/Categories';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { Listing, Reservation, User } from '@prisma/client';
 import axios from 'axios';
-import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
+import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Range } from 'react-date-range';
@@ -55,6 +55,7 @@ export default function ListingClient({
 	const [isLoading, setIsLoading] = useState(false);
 	const [totalPrice, setTotalPrice] = useState(listing.price);
 	const [dateRange, setDateRange] = useState<Range>(initialDateRange);
+	console.log(totalPrice);
 
 	//create reservation function
 	const onCreateReservation = useCallback(() => {
@@ -87,10 +88,9 @@ export default function ListingClient({
 	//calculating the price depending on how user selects the date
 	useEffect(() => {
 		if (dateRange.startDate && dateRange.endDate) {
-			const dayCount = differenceInCalendarDays(
-				dateRange.startDate,
-				dateRange.endDate
-			);
+			console.log(dateRange.startDate, dateRange.endDate);
+			const dayCount = differenceInDays(dateRange.endDate, dateRange.startDate);
+			console.log(dayCount);
 
 			if (dayCount && listing.price) {
 				setTotalPrice(dayCount * listing.price);

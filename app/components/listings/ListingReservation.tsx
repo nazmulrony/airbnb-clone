@@ -37,6 +37,7 @@ export default function ListingReservation({
 			/>
 			<div className="p-4">
 				<Button
+					isLoading={disabled}
 					disabled={disabled}
 					label="Reserve"
 					onClick={onSubmit}
