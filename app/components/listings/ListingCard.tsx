@@ -17,6 +17,7 @@ interface ListingCardProps {
 	actionLabel?: string;
 	actionId?: string;
 	currentUser?: User | null;
+	isLoading?: boolean;
 }
 
 export default function ListingCard({
@@ -27,6 +28,7 @@ export default function ListingCard({
 	actionLabel,
 	actionId = '',
 	currentUser,
+	isLoading,
 }: ListingCardProps) {
 	const router = useRouter();
 	const { getByValue } = useCountries();
@@ -78,18 +80,13 @@ export default function ListingCard({
 						className="object-cover h-full w-full group-hover:scale-110 duration-[400ms]"
 					/>
 					<div className="absolute top-3 right-3">
-						<HeartButton
-							listingId={data.id}
-							currentUser={currentUser}
-						/>
+						<HeartButton listingId={data.id} currentUser={currentUser} />
 					</div>
 				</div>
 				<p className="font-semibold text-lg">
 					{location?.label}, {location?.region}
 				</p>
-				<p className="font-light text-neutral-500 ">
-					{reservationDate || data.category}
-				</p>
+				<p className="font-light text-neutral-500 ">{reservationDate || data.category}</p>
 				<div className="flex flex-row items-center gap-1">
 					<p className="font-semibold">${price}</p>
 					{!reservation && <p className="font-light">night</p>}
@@ -100,6 +97,7 @@ export default function ListingCard({
 						small
 						label={actionLabel}
 						onClick={handleCancel}
+						isLoading={isLoading}
 					/>
 				)}
 			</div>

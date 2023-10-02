@@ -8,7 +8,7 @@ import { categories } from '@/app/components/navbar/Categories';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { Listing, Reservation, User } from '@prisma/client';
 import axios from 'axios';
-import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from 'date-fns';
+import { differenceInDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Range } from 'react-date-range';
@@ -74,7 +74,7 @@ export default function ListingClient({
 			.then(() => {
 				toast.success('Listing reserved');
 				//redirect to trip
-				router.refresh();
+				router.push('/trips');
 			})
 			.catch(() => {
 				toast.error('Something went wrong!');
