@@ -55,7 +55,6 @@ export default function ListingClient({
 	const [isLoading, setIsLoading] = useState(false);
 	const [totalPrice, setTotalPrice] = useState(listing.price);
 	const [dateRange, setDateRange] = useState<Range>(initialDateRange);
-	console.log(totalPrice);
 
 	//create reservation function
 	const onCreateReservation = useCallback(() => {

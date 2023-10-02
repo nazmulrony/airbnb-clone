@@ -16,5 +16,7 @@ export default async function ListingPage({ params }: { params: IParams }) {
 	if (!listing) {
 		return <EmptyState />;
 	}
-	return <ListingClient listing={listing} currentUser={currentUser} />;
+	return (
+		<ListingClient listing={listing} currentUser={currentUser} reservations={reservations} />
+	);
 }

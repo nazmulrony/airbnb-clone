@@ -7,8 +7,10 @@ import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { signOut, useSession } from 'next-auth/react';
 import useRentModal from '@/app/hooks/useRentModal';
+import { useRouter } from 'next/navigation';
 
 export default function UserMenu() {
+	const router = useRouter();
 	const registerModal = useRegisterModal();
 	const loginModal = useLoginModal();
 	const rentModal = useRentModal();
@@ -51,36 +53,18 @@ export default function UserMenu() {
 					<div className="flex flex-col cursor-pointer">
 						{session.status === 'authenticated' ? (
 							<>
-								<MenuItem label="My Trips" onClick={() => {}} />
-								<MenuItem
-									label="My Favorites"
-									onClick={() => {}}
-								/>
-								<MenuItem
-									label="My Reservations"
-									onClick={() => {}}
-								/>
-								<MenuItem
-									label="My Properties"
-									onClick={() => {}}
-								/>
-								<MenuItem
-									label="Airbnb My Home"
-									onClick={rentModal.onOpen}
-								/>
+								<MenuItem label="My Trips" onClick={() => router.push('/trips')} />
+								<MenuItem label="My Favorites" onClick={() => {}} />
+								<MenuItem label="My Reservations" onClick={() => {}} />
+								<MenuItem label="My Properties" onClick={() => {}} />
+								<MenuItem label="Airbnb My Home" onClick={rentModal.onOpen} />
 								<hr />
 								<MenuItem label="Logout" onClick={signOut} />
 							</>
 						) : (
 							<>
-								<MenuItem
-									label="Login"
-									onClick={loginModal.onOpen}
-								/>
-								<MenuItem
-									label="Sign Up"
-									onClick={registerModal.onOpen}
-								/>
+								<MenuItem label="Login" onClick={loginModal.onOpen} />
+								<MenuItem label="Sign Up" onClick={registerModal.onOpen} />
 							</>
 						)}
 					</div>

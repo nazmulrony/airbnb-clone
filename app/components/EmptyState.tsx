@@ -21,11 +21,7 @@ export default function EmptyState({
 			<Heading center title={title} subtitle={subtitle} />
 			<div className="w-48 mt-4 ">
 				{showReset && (
-					<Button
-						outline
-						label="Remove all filters"
-						onClick={() => router.push('/')}
-					/>
+					<Button outline label="Remove all filters" onClick={() => router.push('/')} />
 				)}
 			</div>
 		</div>
