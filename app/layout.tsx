@@ -8,6 +8,7 @@ import ToasterProvider from './providers/ToasterProvider';
 import LoginModal from './components/modals/LoginModal';
 import AuthProvider from './components/providers/AuthProvider';
 import RentModal from './components/modals/RentModal';
+import SearchModal from './components/modals/SearchModal';
 
 const font = Nunito({ subsets: ['latin'] });
 
@@ -16,11 +17,7 @@ export const metadata: Metadata = {
 	description: 'Airbnb clone using nextjs',
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
 			<body className={font.className}>
@@ -28,6 +25,7 @@ export default function RootLayout({
 				<RegisterModal />
 				<LoginModal />
 				<RentModal />
+				<SearchModal />
 				<AuthProvider>
 					<Navbar />
 				</AuthProvider>
