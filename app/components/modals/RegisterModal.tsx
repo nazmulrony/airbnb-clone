@@ -33,6 +33,7 @@ export default function RegisterModal() {
 			.then(() => {
 				registerModal.onClose();
 				toast.success('User created. Please login now.');
+				loginModal.onOpen();
 			})
 			.catch((error) => {
 				toast.error(error.message);
