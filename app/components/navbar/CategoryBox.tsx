@@ -10,11 +10,7 @@ interface CategoryBoxProps {
 	selected?: boolean;
 }
 
-export default function CategoryBox({
-	icon: Icon,
-	label,
-	selected,
-}: CategoryBoxProps) {
+export default function CategoryBox({ icon: Icon, label, selected }: CategoryBoxProps) {
 	const router = useRouter();
 	const params = useSearchParams();
 

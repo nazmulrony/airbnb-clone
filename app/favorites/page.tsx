@@ -3,7 +3,7 @@ import getFavoriteListings from '../actions/getFavoriteListings';
 import EmptyState from '../components/EmptyState';
 import FavoritesClient from './FavoritesClient';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 export default async function FavoritesPage() {
 	const listings = await getFavoriteListings();
