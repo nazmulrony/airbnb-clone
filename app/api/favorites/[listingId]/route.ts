@@ -1,6 +1,6 @@
 import getCurrentUser from '@/app/actions/getCurrentUser';
 import { NextResponse } from 'next/server';
-// import prisma from '@/app/libs/prismadb';
+import prisma from '@/app/libs/prismadb';
 
 interface IParams {
 	listingId: string;
@@ -35,10 +35,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
 }
 
 //delete favorite item
-export async function DELETE(
-	request: Request,
-	{ params }: { params: IParams }
-) {
+export async function DELETE(request: Request, { params }: { params: IParams }) {
 	const currentUser = await getCurrentUser();
 
 	if (!currentUser) {
