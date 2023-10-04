@@ -53,33 +53,66 @@ export default function UserMenu() {
 					<div className="flex flex-col cursor-pointer">
 						{session.status === 'authenticated' ? (
 							<>
-								<MenuItem label="My Trips" onClick={() => router.push('/trips')} />
+								<MenuItem
+									label="My Trips"
+									onClick={() => {
+										router.push('/trips');
+										setIsOpen(false);
+									}}
+								/>
 								<MenuItem
 									label="My Favorites"
-									onClick={() => router.push('/favorites')}
+									onClick={() => {
+										router.push('/favorites');
+										setIsOpen(false);
+									}}
 								/>
 								<MenuItem
 									label="My Reservations"
-									onClick={() => router.push('/reservations')}
+									onClick={() => {
+										router.push('/reservations');
+										setIsOpen(false);
+									}}
 								/>
 								<MenuItem
 									label="My Properties"
-									onClick={() => router.push('/properties')}
+									onClick={() => {
+										router.push('/properties');
+										setIsOpen(false);
+									}}
 								/>
-								<MenuItem label="Airbnb My Home" onClick={rentModal.onOpen} />
+								<MenuItem
+									label="Airbnb My Home"
+									onClick={() => {
+										rentModal.onOpen();
+										setIsOpen(false);
+									}}
+								/>
 								<hr />
 								<MenuItem
 									label="Logout"
 									onClick={() => {
-										router.push('/');
 										signOut();
+										setIsOpen(false);
 									}}
 								/>
 							</>
 						) : (
 							<>
-								<MenuItem label="Login" onClick={loginModal.onOpen} />
-								<MenuItem label="Sign Up" onClick={registerModal.onOpen} />
+								<MenuItem
+									label="Login"
+									onClick={() => {
+										loginModal.onOpen();
+										setIsOpen(false);
+									}}
+								/>
+								<MenuItem
+									label="Sign Up"
+									onClick={() => {
+										registerModal.onOpen();
+										setIsOpen(false);
+									}}
+								/>
 							</>
 						)}
 					</div>
